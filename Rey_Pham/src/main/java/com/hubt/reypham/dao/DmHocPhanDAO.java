@@ -5,6 +5,8 @@ import com.hubt.reypham.utils.ConnectSQL;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.LinkedList;
+import java.util.List;
 
 public class DmHocPhanDAO {
 
@@ -53,5 +55,20 @@ public class DmHocPhanDAO {
                    rs.getString(5));
         }
         throw new RuntimeException("not found");
+    }
+    public List<DmHocPhan> findAll() throws SQLException{
+        List<DmHocPhan> list = new LinkedList<>();
+         String query = "SELECT * FROM DMHOCPHAN ";
+        PreparedStatement pre = ConnectSQL.conn.prepareStatement(query);
+         ResultSet rs = pre.executeQuery();
+        while (rs.next()) {
+            list.add(new DmHocPhan(
+                    rs.getString(1),
+                   rs.getString(2),
+                  rs.getString(3),
+                  rs.getString(4),
+                   rs.getString(5)));
+        }
+        return list;
     }
 }
