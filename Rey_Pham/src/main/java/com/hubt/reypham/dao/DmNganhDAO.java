@@ -1,10 +1,13 @@
 package com.hubt.reypham.dao;
 
+import com.hubt.reypham.model.DmHocPhan;
 import com.hubt.reypham.model.DmNganh;
 import com.hubt.reypham.utils.ConnectSQL;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  *
@@ -50,5 +53,19 @@ public class DmNganhDAO {
                     rs.getString(3)
             );
         throw new RuntimeException("Not found " +ma);
+    }
+    public List<DmNganh> findAll()throws SQLException{
+        List<DmNganh> list = new LinkedList<>();
+        String query = "SELECT * FROM DMNGANH ";
+        PreparedStatement pre = ConnectSQL.conn.prepareStatement(query);
+         ResultSet rs = pre.executeQuery();
+        while (rs.next()) {
+            list.add(new DmNganh(
+                    rs.getString(1),
+                    rs.getString(2),
+                    rs.getString(3))
+            );
+        }
+        return list;
     }
 }

@@ -4,11 +4,14 @@
  */
 package com.hubt.reypham.dao;
 
+import com.hubt.reypham.model.DmHocPhan;
 import com.hubt.reypham.model.DmKhoa;
 import com.hubt.reypham.utils.ConnectSQL;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  *
@@ -45,5 +48,19 @@ public class DmKhoaDAO {
         while(rs.next())
             return new  DmKhoa(rs.getString(1), rs.getString(2));
         throw new RuntimeException("Not found");
+    }
+   public List<DmKhoa> findAll() throws SQLException{
+        List<DmKhoa> list = new LinkedList<>();
+         String query = "SELECT * FROM DMKHOA ";
+        PreparedStatement pre = ConnectSQL.conn.prepareStatement(query);
+         ResultSet rs = pre.executeQuery();
+        while (rs.next()) {
+            list.add(
+                    new DmKhoa(
+                            rs.getString(1),
+                            rs.getString(2))
+            );
+        }
+        return list;
     }
 }

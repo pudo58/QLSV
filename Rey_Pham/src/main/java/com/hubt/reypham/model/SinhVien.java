@@ -1,5 +1,6 @@
 package com.hubt.reypham.model;
 
+import java.sql.Date;
 import java.util.Objects;
 
 /**
@@ -7,9 +8,11 @@ import java.util.Objects;
  * @author tho.lv
  */
 public class SinhVien {
-    private String maSv,hoTen,maLop,gioiTinh,ngaySinh,diaChi;
+    private String maSv,hoTen,maLop,diaChi;
+    private int gioiTinh;
+    private Date ngaySinh;
 
-    public SinhVien(String maSv, String hoTen, String maLop, String gioiTinh, String ngaySinh, String diaChi) {
+    public SinhVien(String maSv, String hoTen, String maLop, int gioiTinh, Date ngaySinh, String diaChi) {
         this.maSv = maSv;
         this.hoTen = hoTen;
         this.maLop = maLop;
@@ -42,19 +45,19 @@ public class SinhVien {
         this.maLop = maLop;
     }
 
-    public String getGioiTinh() {
+    public int getGioiTinh() {
         return gioiTinh;
     }
 
-    public void setGioiTinh(String gioiTinh) {
+    public void setGioiTinh(int gioiTinh) {
         this.gioiTinh = gioiTinh;
     }
 
-    public String getNgaySinh() {
+    public Date getNgaySinh() {
         return ngaySinh;
     }
 
-    public void setNgaySinh(String ngaySinh) {
+    public void setNgaySinh(Date ngaySinh) {
         this.ngaySinh = ngaySinh;
     }
 

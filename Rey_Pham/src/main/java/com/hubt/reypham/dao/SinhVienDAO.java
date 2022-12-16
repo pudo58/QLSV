@@ -28,8 +28,8 @@ public class SinhVienDAO {
         pre.setString(1, sinhVien.getMaSv());
         pre.setString(2, sinhVien.getHoTen());
         pre.setString(3, sinhVien.getMaLop());
-        pre.setString(4, sinhVien.getGioiTinh());
-        pre.setString(5, sinhVien.getNgaySinh());
+        pre.setInt(4, sinhVien.getGioiTinh());
+        pre.setDate(5, sinhVien.getNgaySinh());
         pre.setString(6, sinhVien.getDiaChi());
         return pre.executeUpdate();
     }
@@ -39,8 +39,8 @@ public class SinhVienDAO {
         PreparedStatement pre = ConnectSQL.conn.prepareStatement(query);
         pre.setString(1, sinhVien.getHoTen());
         pre.setString(2, sinhVien.getMaLop());
-        pre.setString(3, sinhVien.getGioiTinh());
-        pre.setString(4, sinhVien.getNgaySinh());
+        pre.setInt(3, sinhVien.getGioiTinh());
+        pre.setDate(4, sinhVien.getNgaySinh());
         pre.setString(5, sinhVien.getDiaChi());
         pre.setString(6, sinhVien.getMaSv());
         return pre.executeUpdate();
@@ -63,8 +63,8 @@ public class SinhVienDAO {
                     rs.getString(1),
                     rs.getString(2),
                     rs.getString(3),
-                    rs.getString(4),
-                    rs.getString(5),
+                    rs.getInt(4),
+                    rs.getDate(5),
                     rs.getString(6)
             );
         }
@@ -81,8 +81,8 @@ public class SinhVienDAO {
                     rs.getString(1),
                     rs.getString(2),
                     rs.getString(3),
-                    rs.getString(4),
-                    rs.getString(5),
+                    rs.getInt(4),
+                    rs.getDate(5),
                     rs.getString(6)
             ));
         }
